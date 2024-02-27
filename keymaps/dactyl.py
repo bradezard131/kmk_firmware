@@ -20,7 +20,7 @@ kb.modules.append(TapDance())
 side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEFT
 if side == SplitSide.RIGHT:
     print("Initialising RIGHT side")
-    kb.col_pins = (
+    kb.row_pins = (
         board.GP0,
         board.GP1,
         board.GP2,
@@ -28,7 +28,7 @@ if side == SplitSide.RIGHT:
         board.GP5,
         board.GP4,
     )
-    kb.row_pins = (
+    kb.col_pins = (
         board.GP10,
         board.GP13,
         board.GP11,
@@ -40,7 +40,7 @@ if side == SplitSide.RIGHT:
     split = Split(
         split_side=side,
         split_type=SplitType.UART,
-        split_target_left=True,
+        split_target_left=False,
         data_pin=board.GP17,
         data_pin2=board.GP16,
         uart_flip=False,
@@ -68,7 +68,7 @@ else:
     split = Split(
         split_side=side,
         split_type=SplitType.UART,
-        split_target_left=True,
+        split_target_left=False,
         data_pin=board.GP17,
         data_pin2=board.GP16,
         uart_flip=False,
