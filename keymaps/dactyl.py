@@ -21,33 +21,6 @@ side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEF
 if side == SplitSide.RIGHT:
     print("Initialising RIGHT side")
     kb.col_pins = (
-        board.GP5,
-        board.GP4,
-        board.GP1,
-        board.GP3,
-        board.GP2,
-        board.GP0,
-    )
-
-    kb.row_pins = (
-        board.GP14,
-        board.GP13,
-        board.GP12,
-        board.GP11,
-        board.GP10,
-        board.GP9
-    )
-    kb.diode_orientation = DiodeOrientation.COL2ROW
-    split = Split(
-        split_side=side,
-        split_type=SplitType.UART,
-        split_target_left=False,
-        data_pin=board.GP17,
-        data_pin2=board.GP16,
-        uart_flip=False,
-    )
-else:
-    kb.col_pins = (
         board.GP0,
         board.GP1,
         board.GP2,
@@ -63,11 +36,39 @@ else:
         board.GP14,
         board.GP15,
     )
+    kb.diode_orientation = DiodeOrientation.COL2ROW
+    split = Split(
+        split_side=side,
+        split_type=SplitType.UART,
+        split_target_left=True,
+        data_pin=board.GP17,
+        data_pin2=board.GP16,
+        uart_flip=False,
+    )
+else:
+    print("Initialising LEFT side")
+    kb.col_pins = (
+        board.GP5,
+        board.GP4,
+        board.GP1,
+        board.GP3,
+        board.GP2,
+        board.GP0,
+
+    )
+    kb.row_pins = (
+        board.GP14,
+        board.GP13,
+        board.GP12,
+        board.GP11,
+        board.GP10,
+        board.GP9
+    )
     kb.diode_orientation = kb.diode_orientation = DiodeOrientation.COL2ROW
     split = Split(
         split_side=side,
         split_type=SplitType.UART,
-        split_target_left=runtime.usb_connected,
+        split_target_left=True,
         data_pin=board.GP17,
         data_pin2=board.GP16,
         uart_flip=False,
