@@ -38,9 +38,10 @@ if side == SplitSide.RIGHT:
     )
     kb.diode_orientation = DiodeOrientation.COL2ROW
     split = Split(
+        split_flip=False,
         split_side=side,
         split_type=SplitType.UART,
-        split_target_left=False,
+        split_target_left=not runtime.usb_connected,
         data_pin=board.GP17,
         data_pin2=board.GP16,
         uart_flip=False,
@@ -68,12 +69,12 @@ else:
     split = Split(
         split_side=side,
         split_type=SplitType.UART,
-        split_target_left=False,
+        split_target_left=runtime.usb_connected,
         data_pin=board.GP17,
         data_pin2=board.GP16,
         uart_flip=False,
     )
-#kb.modules.append(split)
+kb.modules.append(split)
 
 ABSENT = KC.NO
 UNBOUND = KC.NO
