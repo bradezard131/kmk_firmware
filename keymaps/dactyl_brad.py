@@ -81,12 +81,11 @@ kb.modules.append(TapDance())
 kb.modules.append(OneShot())
 
 
-
 ABSENT = KC.NO
 UNBOUND = KC.NO
 
 NAV_FN = KC.TT(1)
-SYM = KC.TT(2)
+SYM = KC.TD(KC.TT(2), NAV_FN)
 NUMPAD = KC.TT(3)
 
 REDO = KC.LCTRL(KC.Y)
@@ -94,12 +93,6 @@ UNDO = KC.LCTRL(KC.Z)
 CUT = KC.LCTRL(KC.X)
 COPY = KC.LCTRL(KC.C)
 PASTE = KC.LCTRL(KC.V)
-
-combos = Combos()
-combos.combos = [
-    Chord((KC.LSHIFT, KC.RSHIFT), KC.CW),
-    Chord((KC.LCTRL, KC.RCTRL), NAV_FN)
-]
 
 
 kb.keymap = [
