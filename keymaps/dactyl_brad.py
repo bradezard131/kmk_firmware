@@ -87,6 +87,7 @@ UNBOUND = KC.NO
 NAV_FN = KC.TT(1)
 SYM = KC.TD(KC.TT(2), NAV_FN)
 NUMPAD = KC.TT(3)
+NUM_SYM = KC.TD(KC.TT(4), NUMPAD)
 
 REDO = KC.LCTRL(KC.Y)
 UNDO = KC.LCTRL(KC.Z)
@@ -99,11 +100,11 @@ kb.keymap = [
     # Native Colemak
     [
         KC.GRAVE,  KC.N1,   KC.N2,       KC.N3,       KC.N4,     KC.N5,            KC.N6,     KC.N7,      KC.N8,       KC.N9,          KC.N0,       KC.EQUAL,
-        NUMPAD,    KC.Q,    KC.W,        KC.F,        KC.P,      KC.B,             KC.J,      KC.L,       KC.U,        KC.Y,           KC.SCOLON,   KC.MINUS,
-        SYM,       KC.A,    KC.R,        KC.S,        KC.T,      KC.G,             KC.M,      KC.N,       KC.E,        KC.I,           KC.O,        KC.QUOTE,
+        KC.ESC,    KC.Q,    KC.W,        KC.F,        KC.P,      KC.B,             KC.J,      KC.L,       KC.U,        KC.Y,           KC.SCOLON,   KC.MINUS,
+        KC.TAB,    KC.A,    KC.R,        KC.S,        KC.T,      KC.G,             KC.M,      KC.N,       KC.E,        KC.I,           KC.O,        KC.QUOTE,
         KC.LSHIFT, KC.Z,    KC.X,        KC.C,        KC.D,      KC.V,             KC.K,      KC.H,       KC.COMMA,    KC.DOT,         KC.SLASH,    KC.RSHIFT,
         ABSENT,    ABSENT,  KC.LBRACKET, KC.RBRACKET, KC.BSPACE, KC.SPACE,         KC.ENTER,  KC.DELETE,  KC.LPRN,     KC.RPRN,        ABSENT,      ABSENT,
-        ABSENT,    ABSENT,  KC.LALT,     KC.LWIN,     KC.LCTRL,  KC.TAB,           KC.ESC,    KC.RCTRL,   KC.RALT,     KC.RWIN,        ABSENT,      ABSENT,
+        ABSENT,    ABSENT,  KC.LALT,     KC.LWIN,     KC.LCTRL,  NAV_FN,           NUM_SYM,   KC.RCTRL,   KC.RALT,     KC.RWIN,        ABSENT,      ABSENT,
     ],
 
     # Function and Nav Layer
@@ -126,7 +127,7 @@ kb.keymap = [
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
     ],
 
-    # Num Layer
+    # Numpad Layer
     [
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.LBRC, KC.N7,        KC.N8,       KC.N9,     KC.RBRC,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
@@ -135,6 +136,16 @@ kb.keymap = [
         KC.TRNS,  KC.TRNS, KC.DOT,       KC.N0,       KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.MINUS,           KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
     ],
+
+    # Number/Symbol layer
+    [
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+        KC.SLASH, KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.MINUS,
+        KC.PIPE,  KC.N1,   KC.N2,        KC.N3,       KC.N4,     KC.N5,              KC.N6,     KC.N7,      KC.N8,       KC.N9,          KC.N0,       KC.PLUS,
+        KC.TRNS,  KC.EXLM, KC.AT,        KC.HASH,     KC.DLR,    KC.PERCENT,         KC.CIRC,   KC.AMPR,    KC.ASTR,     KC.LPRN,        KC.RPRN,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+    ]
 ]
 
 
