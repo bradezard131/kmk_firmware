@@ -5,6 +5,7 @@ from supervisor import runtime
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC
 from kmk.modules.capsword import CapsWord
+from kmk.modules.combos import Combos, Chord
 from kmk.modules.layers import Layers
 from kmk.modules.split import Split, SplitSide, SplitType
 from kmk.modules.tapdance import TapDance
@@ -13,10 +14,6 @@ from kmk.scanners import DiodeOrientation
 
 
 kb = KMKKeyboard()
-kb.modules.append(CapsWord())
-kb.modules.append(Layers())
-kb.modules.append(TapDance())
-kb.modules.append(OneShot())
 
 # Fix my abysmal wiring job and set up the splits
 side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEFT
@@ -78,6 +75,16 @@ else:
     )
 kb.modules.append(split)
 
+kb.modules.append(CapsWord())
+kb.modules.append(Layers())
+kb.modules.append(TapDance())
+kb.modules.append(OneShot())
+
+combos = Combos()
+combos.combos = [
+    Chord((KC.LSHIFT, KC.RSHIFT), KC.CW),
+]
+
 
 ABSENT = KC.NO
 UNBOUND = KC.NO
@@ -85,7 +92,7 @@ UNBOUND = KC.NO
 WIN_NAV = KC.LT(1, KC.LWIN)
 FN_RCTRL = KC.HT(KC.OS(KC.MO(2)), KC.RCTRL)
 SYM_RALT = KC.HT(KC.OS(KC.MO(3)), KC.RALT)
-NUMPAD = KC.TG(4)
+NUMPAD = KC.TD(UNBOUND, KC.TG(4))
 
 REDO = KC.LCTRL(KC.Y)
 UNDO = KC.LCTRL(KC.Z)
