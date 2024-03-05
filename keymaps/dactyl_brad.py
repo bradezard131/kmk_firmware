@@ -80,19 +80,14 @@ kb.modules.append(Layers())
 kb.modules.append(TapDance())
 kb.modules.append(OneShot())
 
-combos = Combos()
-combos.combos = [
-    Chord((KC.LSHIFT, KC.RSHIFT), KC.CW),
-]
 
 
 ABSENT = KC.NO
 UNBOUND = KC.NO
 
-WIN_NAV = KC.LT(1, KC.LWIN)
-FN_RCTRL = KC.HT(KC.OS(KC.MO(2)), KC.RCTRL)
-SYM_RALT = KC.HT(KC.OS(KC.MO(3)), KC.RALT)
-NUMPAD = KC.TD(UNBOUND, KC.TG(4))
+NAV_FN = KC.TT(1)
+SYM = KC.TT(2)
+NUMPAD = KC.TT(3)
 
 REDO = KC.LCTRL(KC.Y)
 UNDO = KC.LCTRL(KC.Z)
@@ -100,46 +95,42 @@ CUT = KC.LCTRL(KC.X)
 COPY = KC.LCTRL(KC.C)
 PASTE = KC.LCTRL(KC.V)
 
+combos = Combos()
+combos.combos = [
+    Chord((KC.LSHIFT, KC.RSHIFT), KC.CW),
+    Chord((KC.LCTRL, KC.RCTRL), NAV_FN)
+]
+
 
 kb.keymap = [
     # Native Colemak
     [
         KC.GRAVE,  KC.N1,   KC.N2,       KC.N3,       KC.N4,     KC.N5,            KC.N6,     KC.N7,      KC.N8,       KC.N9,          KC.N0,       KC.EQUAL,
         NUMPAD,    KC.Q,    KC.W,        KC.F,        KC.P,      KC.B,             KC.J,      KC.L,       KC.U,        KC.Y,           KC.SCOLON,   KC.MINUS,
-        UNBOUND,   KC.A,    KC.R,        KC.S,        KC.T,      KC.G,             KC.M,      KC.N,       KC.E,        KC.I,           KC.O,        KC.QUOTE,
+        SYM,       KC.A,    KC.R,        KC.S,        KC.T,      KC.G,             KC.M,      KC.N,       KC.E,        KC.I,           KC.O,        KC.QUOTE,
         KC.LSHIFT, KC.Z,    KC.X,        KC.C,        KC.D,      KC.V,             KC.K,      KC.H,       KC.COMMA,    KC.DOT,         KC.SLASH,    KC.RSHIFT,
         ABSENT,    ABSENT,  KC.LBRACKET, KC.RBRACKET, KC.BSPACE, KC.SPACE,         KC.ENTER,  KC.DELETE,  KC.LPRN,     KC.RPRN,        ABSENT,      ABSENT,
-        ABSENT,    ABSENT,  KC.LALT,     WIN_NAV,     KC.LCTRL,  KC.TAB,           KC.ESC,    FN_RCTRL,   SYM_RALT,    KC.RWIN,        ABSENT,      ABSENT,
+        ABSENT,    ABSENT,  KC.LALT,     KC.LWIN,     KC.LCTRL,  KC.TAB,           KC.ESC,    KC.RCTRL,   KC.RALT,     KC.RWIN,        ABSENT,      ABSENT,
     ],
 
-    # Nav Layer
+    # Function and Nav Layer
     [
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            REDO,      PASTE,      COPY,        CUT,            UNDO,        KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.CW,     KC.LEFT,    KC.DOWN,     KC.UP,          KC.RIGHT,    KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.INS,    KC.HOME,    KC.PGDN,     KC.PGUP,        KC.END,      KC.TRNS,
+        KC.TRNS,  KC.F12,  KC.F7,        KC.F8,       KC.F9,     KC.PSCR,            REDO,      PASTE,      COPY,        CUT,            UNDO,        KC.TRNS,
+        KC.TRNS,  KC.F11,  KC.F4,        KC.F5,       KC.F6,     KC.SLCK,            KC.CW,     KC.LEFT,    KC.DOWN,     KC.UP,          KC.RIGHT,    KC.TRNS,
+        KC.TRNS,  KC.F10,  KC.F1,        KC.F2,       KC.F3,     KC.PAUSE,           KC.INS,    KC.HOME,    KC.PGDN,     KC.PGUP,        KC.END,      KC.TRNS,
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-    ],
-
-    # Function Layer
-    [
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.F12,  KC.F7,        KC.F8,       KC.F9,     KC.PSCR,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.F11,  KC.F4,        KC.F5,       KC.F6,     KC.SLCK,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.F10,  KC.F1,        KC.F2,       KC.F3,     KC.PAUSE,           KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.SEL,    KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
     ],
 
     # Symbol Layer
     [
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.LCBR, KC.AMPR,      KC.ASTR,     KC.LPRN,   KC.RCBR,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.COLN, KC.DLR,       KC.PERCENT,  KC.CIRC,   KC.PLUS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TILD, KC.EXLM,      KC.AT,       KC.HASH,   KC.PIPE,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.LPRN,   KC.RPRN,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.UNDS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.LCBR,   KC.LPRN,    KC.ASTR,     KC.AMPR,        KC.RCBR,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.PLUS,   KC.CIRC,    KC.PERCENT,  KC.DLR,         KC.COLN,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.PIPE,   KC.HASH,    KC.AT,       KC.EXLM,        KC.TILD,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
     ],
 
     # Num Layer
@@ -148,7 +139,7 @@ kb.keymap = [
         KC.TRNS,  KC.LBRC, KC.N7,        KC.N8,       KC.N9,     KC.RBRC,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.SCLN, KC.N4,        KC.N5,       KC.N6,     KC.EQUAL,           KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.GRV,  KC.N1,        KC.N2,       KC.N3,     KC.BSLASH,          KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
-        KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.DOT,    KC.N0,              KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
+        KC.TRNS,  KC.TRNS, KC.DOT,       KC.N0,       KC.TRNS,   KC.TRNS,            KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
         KC.TRNS,  KC.TRNS, KC.TRNS,      KC.TRNS,     KC.TRNS,   KC.MINUS,           KC.TRNS,   KC.TRNS,    KC.TRNS,     KC.TRNS,        KC.TRNS,     KC.TRNS,
     ],
 ]
